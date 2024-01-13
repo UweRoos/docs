@@ -815,7 +815,27 @@ The energy meter does have 2 meters, one for incoming and outgoing power. If you
     1,77070100600100ff@#,Zählernummer,,meter_number,0
     #
     ```
-	
+
+### EasyMeter EASYM60 / EASYM100
+
+While pin locked, just precision 0 without additional data. After calling the energy provider they send a letter with the unlock pin. 
+
+??? summary "View script"
+    ```
+    >D
+    >B
+    =>sensor53 r
+    >M 1
+    +1,3,s,0,9600,SML
+    1,77078181C78203FF@#,Seriennummer,,Meter_id,0
+    1,77070100010800FF@1000,Verbrauch_Summe,kWh,Verbrauch_Summe,7
+    1,77070100010801ff@1000,Verbrauch_Tarif_1,kWh,Verbrauch_T1,7
+    1,77070100010802ff@1000,Verbrauch_Tarif_2,kWh,Verbrauch_T2,7
+    1,77070100020800ff@1000,Einspeisung_Summe,kWh,Einspeisung_Summe,7
+    1,77070100100700ff@1,Leistung_Summe,W,Watt_Summe,2
+    #
+    ```
+ 
 ### EasyMeter Q3A / Apator APOX+ (SML)
 
 A 2-Tariff Meter which for Example SWM (Stadtwerke München) oder DGY (Discovergy) uses. Unfortunately this Version sends only whole kWh (precision 0) without PIN. With PIN behaviour changes and high resolution is available as seen below (e.g. precision 7 for consumption/kWh, precision 2 for power/W, precision 1 for voltage/V).
